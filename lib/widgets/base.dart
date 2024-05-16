@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class Base extends StatefulWidget {
-  const Base({super.key});
-
-  @override
-  State<Base> createState() => _BaseState();
-}
-
-class _BaseState extends State<Base> {
+class Base extends StatelessWidget {
+  var controller = TextEditingController();
+  Function updateBaseHandler;
+  Base(this.updateBaseHandler);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,7 +19,8 @@ class _BaseState extends State<Base> {
           height: 35,
           width: 120,
           child: TextField(
-            style: TextStyle(
+            onSubmitted: (value) => updateBaseHandler(value),
+            style: const TextStyle(
               fontSize: 15,
             ),
             textAlign: TextAlign.values[2],
@@ -32,7 +29,7 @@ class _BaseState extends State<Base> {
               FilteringTextInputFormatter.digitsOnly,
               FilteringTextInputFormatter.allow(RegExp(r'[0-9]'))
             ],
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
                 border: OutlineInputBorder(),
                 contentPadding: EdgeInsets.only(bottom: 0),
                 fillColor: Colors.white,

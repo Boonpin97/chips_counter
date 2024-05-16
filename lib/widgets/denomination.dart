@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '/widgets/coin.dart';
 
-List<String> denomination_list = [];
+List<String> denominationList = [];
 
 class Denomination extends StatefulWidget {
   const Denomination({super.key});
@@ -12,12 +12,12 @@ class Denomination extends StatefulWidget {
 }
 
 class _DenominationState extends State<Denomination> {
-  var Controller = TextEditingController();
+  var controller = TextEditingController();
 
   void _removeValueHandler(int index) {
     print("Remove number: $index");
     setState(() {
-      denomination_list.removeAt(index);
+      denominationList.removeAt(index);
     });
   }
 
@@ -45,7 +45,7 @@ class _DenominationState extends State<Denomination> {
                       keyboardType: TextInputType.number,
                       inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'^[+-]?(\d+(\.\d*)?|\.\d+)$'))],
                       maxLength: 11,
-                      controller: Controller,
+                      controller: controller,
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                         fontSize: 30,
@@ -62,7 +62,7 @@ class _DenominationState extends State<Denomination> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
+                      margin: const EdgeInsets.fromLTRB(0, 10, 0, 0),
                       height: 50,
                       width: 100,
                       color: Colors.green[500],
@@ -72,13 +72,13 @@ class _DenominationState extends State<Denomination> {
                         color: Colors.white,
                         onPressed: () {
                           Navigator.pop(context);
-                          if (Controller.text.isNotEmpty) {
-                            denomination_list.add(Controller.text);
-                            denomination_list
+                          if (controller.text.isNotEmpty) {
+                            denominationList.add(controller.text);
+                            denominationList
                                 .sort((a, b) => double.parse(a).compareTo(double.parse(b))); // sort the list
-                            print(denomination_list);
+                            print(denominationList);
                             setState(() {
-                              Controller.text = "";
+                              controller.text = "";
                             });
                           }
                         },
@@ -106,30 +106,30 @@ class _DenominationState extends State<Denomination> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
+            SizedBox(
               height: 50,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
-                itemCount: denomination_list.length,
+                itemCount: denominationList.length,
                 itemBuilder: (context, index) {
-                  return Coin(_removeValueHandler, denomination_list, index);
+                  return Coin(_removeValueHandler, denominationList, index);
                 },
               ),
             ),
-            (denomination_list.length < 6)
+            (denominationList.length < 6)
                 ? Container(
                     alignment: Alignment.center,
                     child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                       ElevatedButton(
                         onPressed: _addButtonFunction,
-                        child: Icon(Icons.add, color: Colors.green), // icon of the button
                         style: ElevatedButton.styleFrom(
                           // styling the button
-                          shape: CircleBorder(),
-                          padding: EdgeInsets.all(1),
+                          shape: const CircleBorder(),
+                          padding: const EdgeInsets.all(1),
                           backgroundColor: Colors.white, // Button color
                         ),
+                        child: const Icon(Icons.add, color: Colors.green), // icon of the button
                       ),
                     ]),
                   )

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-List<Color> coin_color = [Colors.red, Colors.green, Colors.blue, Colors.yellow, Colors.orange, Colors.grey];
+List<Color> coinColor = [Colors.red, Colors.green, Colors.blue, Colors.yellow, Colors.orange, Colors.grey];
 
 class Coin extends StatelessWidget {
-  int index;
-  List<String> denomination_list;
+  final int index;
+  final List<String> denominationList;
   final Function _handleValue;
 
-  Coin(this._handleValue, this.denomination_list, this.index);
+  Coin(this._handleValue, this.denominationList, this.index);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -15,13 +15,13 @@ class Coin extends StatelessWidget {
       alignment: Alignment.center,
       child: ElevatedButton(
         onPressed: () => _handleValue(index),
-        child: Text("${denomination_list[index]}"), // icon of the button
         style: ElevatedButton.styleFrom(
           // styling the button
-          shape: CircleBorder(),
-          padding: EdgeInsets.all(1),
-          backgroundColor: coin_color[index], // Button color
+          shape: const CircleBorder(),
+          padding: const EdgeInsets.all(1),
+          backgroundColor: coinColor[index], // Button color
         ),
+        child: Text(denominationList[index]), // icon of the button
       ),
     );
   }
