@@ -20,11 +20,11 @@ class Players {
 
   void updateValues() {
     playerBase = buyin * base;
-    earning = total - base;
+    earning = total - playerBase;
     print("$name Total: $total, Earning: $earning, Base: $playerBase");
   }
 
   Players(this.name, [this.base = 25.0]) {
-    playerBase = buyin * base;
+    playerBase = buyin * this.base;
   }
 }

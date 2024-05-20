@@ -76,7 +76,7 @@ class _PlayerCardState extends State<PlayerCard> {
                       playersList[index].name,
                       style: const TextStyle(
                         color: Colors.black,
-                        fontSize: 20,
+                        fontSize: 19,
                         fontWeight: FontWeight.normal,
                       ),
                     ),

@@ -82,7 +82,7 @@ class _PlayerBuyInState extends State<PlayerBuyIn> {
                         onPressed: () {
                           Navigator.pop(context);
                           if (controller.text.isNotEmpty) {
-                            playersList.add(Players(controller.text, base));
+                            playersList.add(Players(controller.text));
                             print(playersList);
                             setState(() {
                               controller.text = "";
