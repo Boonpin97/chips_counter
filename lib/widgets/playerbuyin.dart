@@ -1,4 +1,3 @@
-import 'package:chips_counter/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import '/widgets/playercard.dart';
@@ -103,8 +102,8 @@ class _PlayerBuyInState extends State<PlayerBuyIn> {
 
   @override
   Widget build(BuildContext context) {
-    final double screenWidth = MediaQuery.of(context).size.width;
-    final double screenHeight = MediaQuery.of(context).size.height;
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return Container(
       decoration: const BoxDecoration(color: Colors.white, borderRadius: BorderRadius.all(Radius.circular(10.0))),
       alignment: Alignment.center,

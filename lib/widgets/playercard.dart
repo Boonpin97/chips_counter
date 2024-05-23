@@ -1,7 +1,10 @@
+import 'package:chips_counter/pages/denominationPage.dart';
+import 'package:chips_counter/widgets/denomination.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import '/class/players.dart';
+import '/params.dart';
 
 const whiteAreaWidth = 0.8;
 const whiteAreaHeight = 0.6;
@@ -27,8 +30,8 @@ class _PlayerCardState extends State<PlayerCard> {
   _PlayerCardState(this.index, this.playersList, this.removeHandler);
   @override
   Widget build(BuildContext context) {
-    final double screenWidth = MediaQuery.of(context).size.width;
-    final double screenHeight = MediaQuery.of(context).size.height;
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return Row(
       children: [
         Container(
@@ -62,7 +65,17 @@ class _PlayerCardState extends State<PlayerCard> {
                 alignment: Alignment.center,
                 width: screenWidth * whiteAreaWidth * 0.3,
                 child: TextButton(
-                  onPressed: () => removeHandler(index),
+                  onPressed: () {
+                    // When the user taps the button,
+                    // navigate to a named route and
+                    // provide the arguments as an optional
+                    // parameter.
+                    Navigator.pushNamed(
+                      context,
+                      '/chipPage',
+                      arguments: ScreenArguments(index),
+                    );
+                  },
                   style: TextButton.styleFrom(
                     // styling the button
                     padding: const EdgeInsets.all(1),
@@ -87,63 +100,64 @@ class _PlayerCardState extends State<PlayerCard> {
           ),
         ),
         Container(
-            width: screenWidth * whiteAreaWidth * 0.5,
-            height: screenHeight * whiteAreaHeight * cardHeight,
-            alignment: Alignment.center,
-            // decoration: BoxDecoration(
-            //   border: Border.all(
-            //     color: Colors.black,
-            //     width: 1,
-            //   ),
-            // ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: screenWidth * buttonWidth,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      playersList[index].increasebuyin();
-                      setState(() {});
-                    },
-                    style: ElevatedButton.styleFrom(
-                      // styling the button
-                      shape: const CircleBorder(),
-                      padding: const EdgeInsets.all(1),
-                      backgroundColor: Colors.white, // Button color
-                    ),
-                    child: const Text(
-                      "+",
-                      style: TextStyle(color: Colors.green, fontSize: 25),
-                    ),
+          width: screenWidth * whiteAreaWidth * 0.5,
+          height: screenHeight * whiteAreaHeight * cardHeight,
+          alignment: Alignment.center,
+          // decoration: BoxDecoration(
+          //   border: Border.all(
+          //     color: Colors.black,
+          //     width: 1,
+          //   ),
+          // ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                width: screenWidth * buttonWidth,
+                child: ElevatedButton(
+                  onPressed: () {
+                    playersList[index].increasebuyin();
+                    setState(() {});
+                  },
+                  style: ElevatedButton.styleFrom(
+                    // styling the button
+                    shape: const CircleBorder(),
+                    padding: const EdgeInsets.all(1),
+                    backgroundColor: Colors.white, // Button color
+                  ),
+                  child: const Text(
+                    "+",
+                    style: TextStyle(color: Colors.green, fontSize: 25),
                   ),
                 ),
-                Container(
-                  width: screenWidth * buttonWidth,
-                  alignment: Alignment.center,
-                  child: Text("${playersList[index].buyin}", style: const TextStyle(color: Colors.black, fontSize: 20)),
-                ),
-                SizedBox(
-                  width: screenWidth * buttonWidth,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      playersList[index].decreasebuyin(1);
-                      setState(() {});
-                    },
-                    style: ElevatedButton.styleFrom(
-                      // styling the button
-                      shape: const CircleBorder(),
-                      padding: const EdgeInsets.all(1),
-                      backgroundColor: Colors.white, // Button color
-                    ),
-                    child: const Text(
-                      "-",
-                      style: TextStyle(color: Colors.red, fontSize: 25),
-                    ),
+              ),
+              Container(
+                width: screenWidth * buttonWidth,
+                alignment: Alignment.center,
+                child: Text("${playersList[index].buyin}", style: const TextStyle(color: Colors.black, fontSize: 20)),
+              ),
+              SizedBox(
+                width: screenWidth * buttonWidth,
+                child: ElevatedButton(
+                  onPressed: () {
+                    playersList[index].decreasebuyin(1);
+                    setState(() {});
+                  },
+                  style: ElevatedButton.styleFrom(
+                    // styling the button
+                    shape: const CircleBorder(),
+                    padding: const EdgeInsets.all(1),
+                    backgroundColor: Colors.white, // Button color
+                  ),
+                  child: const Text(
+                    "-",
+                    style: TextStyle(color: Colors.red, fontSize: 25),
                   ),
                 ),
-              ],
-            )),
+              ),
+            ],
+          ),
+        ),
       ],
     );
   }

@@ -5,6 +5,7 @@ class Players {
   double total = 0.0;
   double playerBase = 0.0;
   double earning = 0.0;
+  List<double> denominationCount = [];
 
   void increasebuyin() {
     buyin++;
@@ -21,7 +22,7 @@ class Players {
   void updateValues() {
     playerBase = buyin * base;
     earning = total - playerBase;
-    print("$name Total: $total, Earning: $earning, Base: $playerBase");
+    print("$name Total: $total, Earning: $earning, Base: $playerBase, Total: $total");
   }
 
   Players(this.name, [this.base = 25.0]) {

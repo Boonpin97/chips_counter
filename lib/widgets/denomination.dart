@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '/widgets/coin.dart';
-
-List<String> denominationList = [];
+import '/params.dart';
 
 class Denomination extends StatefulWidget {
   const Denomination({super.key});

@@ -9,23 +9,17 @@ import '/class/players.dart';
 const double boxSpacing = 0.01;
 
 double base = 0.0;
-List<Players> playersList = [
-  // Players("John"),
-  // Players("Doe"),
-  // Players("Lily"),
-  // Players("Emily"),
-  // Players("Michael"),
-  // Players("Sophia"),
-  // Players("David"),
-  // Players("Olivia"),
-];
 
 class HomePage extends StatefulWidget {
+  List<Players> playersList;
+  HomePage(this.playersList, {Key? key}) : super(key: key);
   @override
-  _MyWidgetState createState() => _MyWidgetState();
+  _MyWidgetState createState() => _MyWidgetState(playersList);
 }
 
 class _MyWidgetState extends State<HomePage> {
+  List<Players> playersList;
+  _MyWidgetState(this.playersList);
   void updateBase(input) {
     setState(() {
       base = double.parse(input);

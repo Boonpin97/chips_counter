@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-List<Color> coinColor = [Colors.red, Colors.green, Colors.blue, Colors.yellow, Colors.orange, Colors.grey];
+import '/params.dart';
 
 class Coin extends StatelessWidget {
   final int index;
@@ -10,6 +9,8 @@ class Coin extends StatelessWidget {
   Coin(this._handleValue, this.denominationList, this.index);
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return Container(
       width: 50,
       alignment: Alignment.center,
