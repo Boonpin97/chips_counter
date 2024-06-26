@@ -25,7 +25,6 @@ class _MyWidgetState extends State<HomePage> {
       base = double.parse(input);
       for (int i = 0; i < playersList.length; i++) {
         playersList[i].base = base;
-        playersList[i].updateValues();
       }
     });
   }

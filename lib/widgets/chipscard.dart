@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:chips_counter/widgets/denomination.dart';
 import 'package:flutter/material.dart';
 import '/params.dart';
@@ -24,7 +26,9 @@ class _ChipsCardState extends State<ChipsCard> {
   int quantity = 0;
   final Function _handler;
 
-  _ChipsCardState(this.index, this.player, this._handler);
+  _ChipsCardState(this.index, this.player, this._handler) {
+    quantity = player.denominationCount[index];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,10 +67,11 @@ class _ChipsCardState extends State<ChipsCard> {
                     width: screenWidth * buttonWidth,
                     child: ElevatedButton(
                       onPressed: () {
-                        player.total += double.parse(denominationList[index]);
-                        quantity++;
+                        player.denominationCount[index]++;
                         _handler();
-                        setState(() {});
+                        setState(() {
+                          quantity = player.denominationCount[index];
+                        });
                       },
                       style: ElevatedButton.styleFrom(
                         // styling the button
@@ -89,10 +94,11 @@ class _ChipsCardState extends State<ChipsCard> {
                     width: screenWidth * buttonWidth,
                     child: ElevatedButton(
                       onPressed: () {
-                        player.total -= double.parse(denominationList[index]);
-                        quantity--;
+                        player.denominationCount[index]--;
                         _handler();
-                        setState(() {});
+                        setState(() {
+                          quantity = player.denominationCount[index];
+                        });
                       },
                       style: ElevatedButton.styleFrom(
                         // styling the button

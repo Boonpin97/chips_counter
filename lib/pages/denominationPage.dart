@@ -1,3 +1,4 @@
+import 'package:chips_counter/main.dart';
 import 'package:chips_counter/widgets/denomination.dart';
 import 'package:flutter/material.dart';
 import '/widgets/playerdenomination.dart';
@@ -19,9 +20,16 @@ class DenominationPage extends StatefulWidget {
 class _DenominationPageState extends State<DenominationPage> {
   List<Players> playersList;
   _DenominationPageState(this.playersList);
+
   void _setStateHandler() {
     for (int i = 0; i < playersList.length; i++) {
+      double total = 0;
+      for (int j = 0; j < playersList[i].denominationCount.length; j++) {
+        total += playersList[i].denominationCount[j] * double.parse(denominationList[j]);
+      }
+      playersList[i].total = total;
       playersList[i].updateValues();
+      print(playersList[i].name + playersList[i].denominationCount.toString());
     }
     setState(() {});
   }

@@ -1,3 +1,4 @@
+import 'package:chips_counter/main.dart';
 import 'package:chips_counter/pages/denominationPage.dart';
 import 'package:chips_counter/widgets/denomination.dart';
 import 'package:flutter/cupertino.dart';
@@ -70,6 +71,10 @@ class _PlayerCardState extends State<PlayerCard> {
                     // navigate to a named route and
                     // provide the arguments as an optional
                     // parameter.
+                    if (playersList[index].denominationCount.isEmpty) {
+                      playersList[index].denominationCount = List<int>.filled(denominationList.length, 0);
+                    }
+                    playersList[index].updateValues();
                     Navigator.pushNamed(
                       context,
                       '/chipPage',

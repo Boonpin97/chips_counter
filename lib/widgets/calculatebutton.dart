@@ -12,7 +12,13 @@ class CalculateButton extends StatelessWidget {
     return Container(
       width: screenWidth * buttonWidth,
       child: ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(
+              context,
+              '/summaryPage',
+              //arguments: ScreenArguments(index),
+            );
+          },
           child: const Text('Calculate',
               style: TextStyle(
                 fontSize: 20,

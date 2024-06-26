@@ -26,7 +26,6 @@ class _PlayerDenominationState extends State<PlayerDenomination> {
 
   Players player;
   _PlayerDenominationState(this.player, this._handler);
-
   void _setStateHandler() {
     setState(() {});
   }
