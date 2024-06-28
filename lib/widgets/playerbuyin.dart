@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import '/widgets/playercard.dart';
 import '/class/players.dart';
+import '/params.dart';
 
 const whiteAreaWidth = 0.8;
 const whiteAreaHeight = 0.6;
@@ -9,21 +10,19 @@ const titleHeight = 0.1;
 const addButtonHeight = 0.08;
 
 class PlayerBuyIn extends StatefulWidget {
-  double base;
   List<Players> playersList;
 
-  PlayerBuyIn(this.base, this.playersList, {Key? key}) : super(key: key);
+  PlayerBuyIn(this.playersList, {Key? key}) : super(key: key);
 
   @override
-  _PlayerBuyInState createState() => _PlayerBuyInState(base, playersList);
+  _PlayerBuyInState createState() => _PlayerBuyInState(playersList);
 }
 
 class _PlayerBuyInState extends State<PlayerBuyIn> {
   var controller = TextEditingController();
-  double base;
   List<Players> playersList;
 
-  _PlayerBuyInState(this.base, this.playersList);
+  _PlayerBuyInState(this.playersList);
 
   void removePlayer(int index) {
     setState(() {
@@ -81,7 +80,7 @@ class _PlayerBuyInState extends State<PlayerBuyIn> {
                         onPressed: () {
                           Navigator.pop(context);
                           if (controller.text.isNotEmpty) {
-                            playersList.add(Players(controller.text));
+                            playersList.add(Players(controller.text, playerbase));
                             print(playersList);
                             setState(() {
                               controller.text = "";

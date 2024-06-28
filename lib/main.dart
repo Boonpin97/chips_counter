@@ -6,12 +6,12 @@ import 'pages/summaryPage.dart';
 import 'class/players.dart';
 
 List<Players> playersList = [
-  // Players("John"),
-  // Players("Doe"),
-  // Players("Lily"),
-  // Players("Emily"),
-  // Players("Michael"),
-  // Players("Sophia"),
+  // Players("John", 0),
+  // Players("Doe", 0),
+  // Players("Lily", 0),
+  // Players("Emily", 0),
+  // Players("Michael", 0),
+  // Players("Sophia", 0),
   // Players("David"),
   // Players("Olivia"),
 ];

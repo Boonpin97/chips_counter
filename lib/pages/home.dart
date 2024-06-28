@@ -3,12 +3,10 @@ import 'package:flutter/material.dart';
 import '/widgets/base.dart';
 import '/widgets/denomination.dart';
 import '/widgets/playerbuyin.dart';
-import '/widgets/calculatebutton.dart';
 import '/class/players.dart';
+import '/params.dart';
 
 const double boxSpacing = 0.01;
-
-double base = 0.0;
 
 class HomePage extends StatefulWidget {
   List<Players> playersList;
@@ -19,14 +17,13 @@ class HomePage extends StatefulWidget {
 
 class _MyWidgetState extends State<HomePage> {
   List<Players> playersList;
+
   _MyWidgetState(this.playersList);
+
   void updateBase(input) {
-    setState(() {
-      base = double.parse(input);
-      for (int i = 0; i < playersList.length; i++) {
-        playersList[i].base = base;
-      }
-    });
+    playerbase = double.parse(input);
+    print("Base updated: $playerbase");
+    setState(() {});
   }
 
   @override
@@ -50,8 +47,8 @@ class _MyWidgetState extends State<HomePage> {
               SizedBox(height: screenHeight * boxSpacing),
               const Denomination(),
               SizedBox(height: screenHeight * boxSpacing),
-              PlayerBuyIn(base, playersList),
-              const CalculateButton(),
+              PlayerBuyIn(playersList),
+              CalculateButton(playersList, playerbase),
             ],
           ),
         ));

@@ -74,6 +74,7 @@ class _PlayerCardState extends State<PlayerCard> {
                     if (playersList[index].denominationCount.isEmpty) {
                       playersList[index].denominationCount = List<int>.filled(denominationList.length, 0);
                     }
+                    playersList[index].base = playerbase;
                     playersList[index].updateValues();
                     Navigator.pushNamed(
                       context,

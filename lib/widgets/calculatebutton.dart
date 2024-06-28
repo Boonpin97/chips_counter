@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:chips_counter/class/players.dart';
+import '/params.dart';
 
 const double buttonWidth = 0.8;
 
 class CalculateButton extends StatelessWidget {
-  const CalculateButton({super.key});
+  List<Players> playerlist;
+  double base;
+  CalculateButton(this.playerlist, this.base, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,6 +17,10 @@ class CalculateButton extends StatelessWidget {
       width: screenWidth * buttonWidth,
       child: ElevatedButton(
           onPressed: () {
+            for (Players player in playerlist) {
+              player.base = playerbase;
+              player.updateValues();
+            }
             Navigator.pushNamed(
               context,
               '/summaryPage',

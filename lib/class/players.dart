@@ -1,7 +1,7 @@
 class Players {
   String name;
   int buyin = 1;
-  double base = 0.0;
+  double base;
   double total = 0.0;
   double playerBase = 0.0;
   double earning = 0.0;
@@ -23,7 +23,7 @@ class Players {
     print("$name Total: $total, Earning: $earning, Base: $playerBase, Total: $total");
   }
 
-  Players(this.name) {
+  Players(this.name, this.base) {
     playerBase = buyin * base;
   }
 }
